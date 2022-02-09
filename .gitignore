@@ -27,7 +27,8 @@
 *.lib
 
 # Executables
-*.exe
+#*.exe
+#*.bat
 *.out
 *.app
 main
@@ -36,7 +37,7 @@ main
 *.csv
 *.bin
 *.dat
-*.txt
+#*.txt
 *.zip
 *.rar
 

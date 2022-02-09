@@ -1,0 +1,1 @@
+g++ src\main.cpp src\ordenada\*.cpp src\asterisk\*.cpp src\tabuleiro\*.cpp -o build\app.exe > logs\output.txt 2> logs\error.txt

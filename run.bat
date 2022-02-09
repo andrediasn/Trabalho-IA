@@ -1,0 +1,1 @@
+build\app.exe 2> build\error.txt
