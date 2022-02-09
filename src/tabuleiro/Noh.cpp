@@ -41,9 +41,9 @@ void Noh::setVizinhos(Noh* direita, Noh* baixo){
 
 Noh* Noh::getCima(){ return this->cima; }
 Noh* Noh::getEsquerda(){ return this->esquerda; }
-Noh* Noh::getDiagonal(){ return this->diagonal }
+Noh* Noh::getDiagonal(){ return this->diagonal; }
 Noh* Noh::getDireita(){ return this->direita; }
-Noh* Noh::getVizinho(){ return this->vizinho; }
+Noh* Noh::getBaixo(){ return this->baixo; }
 
 int Noh::getSoma() {
     return this->esquerda->getCor() + this->cima->getCor() + this->diagonal->getCor();

@@ -14,7 +14,7 @@ void Asterisk::Run() {
   tabuleiro->Print("asterisk");
 }
 
-void Asterisk::Iterate() {
+/* void Asterisk::Iterate() {
   list<int> scores;
 
   for( int i = 0; i < tabuleiro->CountAbertos(); i++ ) {
@@ -22,6 +22,5 @@ void Asterisk::Iterate() {
     int pretos = tabuleiro->listaAbertos[i]->getSoma();
     sum += 3 - pretos;
 
-    if( pretos >  )
   }
-}
+} */

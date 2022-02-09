@@ -11,7 +11,7 @@ class Noh {
         Noh* esquerda;
         Noh* diagonal;
         Noh* direita;
-        Noh* vizinho;
+        Noh* baixo;
 
     public:
         Noh(Noh *cima, Noh *esquerda, Noh *diagonal);
@@ -30,7 +30,8 @@ class Noh {
         Noh* getEsquerda();
         Noh* getDiagonal();
         Noh* getDireita();
-        Noh* getVizinho();
+        Noh* getBaixo();
+        void setVizinhos(Noh* direita, Noh* baixo);
 };
 
 #endif // NOH_H_INCLUDED
