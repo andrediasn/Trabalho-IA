@@ -1,7 +1,7 @@
 #ifndef ASTERISK_H_INCLUDED
 #define ASTERISK_H_INCLUDED
 
-#include <list>
+#include <vector>
 #include "../tabuleiro/tabuleiro.h"
 
 using namespace std;
@@ -16,7 +16,7 @@ class Asterisk {
   private:
     Tabuleiro* tabuleiro;
 
-    void Iterate();
+    void Iterate( int& score );
 };
 
 #endif

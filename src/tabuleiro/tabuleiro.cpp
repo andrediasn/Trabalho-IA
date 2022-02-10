@@ -58,19 +58,19 @@ Tabuleiro::Tabuleiro() {
         for( int j = 1; j < 6; j++ ){
             Noh* cima = this->matrix[i-1][j];
             Noh* esquerda = this->matrix[i][j-1];
-            Noh* diagonal = this->matrix[i-i][j-i];
+            Noh* diagonal = this->matrix[i-1][j-1];
             this->matrix[i][j] = new Noh(cima, esquerda, diagonal);
         }
     }
 
-    for( int i = 1; i < 6; i++ ){
-        for( int j = 1; j < 6; j++ ){
-            Noh* cima = this->matrix[i-1][j];
-            Noh* esquerda = this->matrix[i][j-1];
-            Noh* diagonal = this->matrix[i-i][j-i];
-            this->matrix[i][j] = new Noh(cima, esquerda, diagonal);
-        }
-    }
+    // for( int i = 1; i < 6; i++ ){
+    //     for( int j = 1; j < 6; j++ ){
+    //         Noh* cima = this->matrix[i-1][j];
+    //         Noh* esquerda = this->matrix[i][j-1];
+    //         Noh* diagonal = this->matrix[i-i][j-i];
+    //         this->matrix[i][j] = new Noh(cima, esquerda, diagonal);
+    //     }
+    // }
 
     for( int i = 0; i < 5; i++ ){
         for( int j = 0; j < 5; j++ ){
@@ -112,26 +112,30 @@ Tabuleiro::~Tabuleiro(){}
   }
 } */
 
-void Tabuleiro::Print( string file ) {
-  ofstream out("Resultados/" + file + ".txt");
+void Tabuleiro::Print( string file, string title, bool append ) {
+  ofstream out("Resultados/" + file + ".txt", append ? ios_base::app:ios_base::out);
+
+  if( !title.empty() )
+    out << title << endl;
+
   out << "|---|---|---|---|---|---|" << endl;
 
   for( int i = 0; i < 6; i++ ) {
     for( int j = 0; j < 6; j++ ) {
       if( j < 5 ) {
-        if( this->matrix[i][j]->getCor() == 1 )
+        if( this->matrix[i][j]->Vazio() )
+          out << "|   ";
+        else if( this->matrix[i][j]->getCor() == 1 )
           out << "| X ";
         else if( this->matrix[i][j]->getCor() == 0 )
           out << "| O ";
-        else 
-          out << "|   ";
     } else {
-      if( this->matrix[i][j]->getCor() == 1 )
+      if( this->matrix[i][j]->Vazio() )
+          out << "|   |" << endl;
+      else if( this->matrix[i][j]->getCor() == 1 )
         out << "| X |" << endl;
       else if( this->matrix[i][j]->getCor() == 0 )
         out << "| O |" << endl;
-      else 
-        out << "|   |" << endl;
       }
     }
     out << "|---|---|---|---|---|---|" << endl;

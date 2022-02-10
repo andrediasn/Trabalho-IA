@@ -7,6 +7,7 @@ Noh::Noh(Noh *cima, Noh *esquerda, Noh *diagonal){
     this->diagonal = diagonal;
     this->baixo = nullptr;
     this->direita = nullptr;
+    this->vazio = true;
 }
 
 Noh::Noh(int cor){
@@ -15,6 +16,7 @@ Noh::Noh(int cor){
     this->cima = nullptr;
     this->esquerda = nullptr;
     this->diagonal = nullptr;
+    this->vazio = false;
 }
 
 Noh::~Noh(){}
@@ -25,6 +27,7 @@ int Noh::getCor(){
 
 void Noh::setCor(int cor){
     this->cor = cor;
+    this->vazio = false;
 }
 
 bool Noh::getFechado(){
@@ -39,12 +42,14 @@ void Noh::setVizinhos(Noh* direita, Noh* baixo){
     this-> baixo = baixo;
 }
 
-Noh* Noh::getCima(){ return this->cima; }
-Noh* Noh::getEsquerda(){ return this->esquerda; }
-Noh* Noh::getDiagonal(){ return this->diagonal; }
-Noh* Noh::getDireita(){ return this->direita; }
-Noh* Noh::getBaixo(){ return this->baixo; }
+Noh* Noh::getCima() { return this->cima; }
+Noh* Noh::getEsquerda() { return this->esquerda; }
+Noh* Noh::getDiagonal() { return this->diagonal; }
+Noh* Noh::getDireita() { return this->direita; }
+Noh* Noh::getBaixo() { return this->baixo; }
 
 int Noh::getSoma() {
     return this->esquerda->getCor() + this->cima->getCor() + this->diagonal->getCor();
 }
+
+bool Noh::Vazio() { return this->vazio; }

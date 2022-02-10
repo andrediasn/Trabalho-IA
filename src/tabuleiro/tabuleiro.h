@@ -5,18 +5,19 @@
 #include <fstream>
 #include <list>
 #include "Noh.h"
+#include <vector>
 
 using namespace std;
 
 class Tabuleiro {
   public:
     Noh*** matrix;
-    list<Noh*> listaAbertos;
+    vector<Noh*> listaAbertos;
 
     Tabuleiro();
     ~Tabuleiro();
 
-    void Print( string file );
+    void Print( string file, string title = "", bool append = true );
     void Each( void (*callback)(Noh*, int, int) );
     int CountAbertos();
 
