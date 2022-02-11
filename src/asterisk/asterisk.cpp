@@ -7,14 +7,19 @@ Asterisk::Asterisk(){
 Asterisk::~Asterisk(){};
 
 void Asterisk::Run() {
-  int score;
+  int score = 0;
   int it = 1;
 
-  tabuleiro->Print("asterisk", "INICIO", false);
+  this->tabuleiro->Print("asterisk", "INICIO", false);
 
-  while( tabuleiro->CountAbertos() > 0 ) {
+  while( this->tabuleiro->CountAbertos() > 0 ) {
     this->Iterate( score );
-    tabuleiro->Print("asterisk", "ITERACAO " + to_string(it) + " | SCORE " + to_string(score));
+    
+    string abertos;
+    for( int i = 0; i < this->tabuleiro->CountAbertos(); i++ )
+      abertos = abertos + (i == 0 ? "[":" - [") + to_string(this->tabuleiro->listaAbertos[i]->I()) + "," + to_string(this->tabuleiro->listaAbertos[i]->J()) + "]";
+
+    tabuleiro->Print("asterisk", "ITERACAO " + to_string(it) + " | SCORE " + to_string(score) + " | ABERTOS = { " + abertos + " }");
 
     it++;
   }
@@ -26,6 +31,7 @@ void Asterisk::Iterate( int& score ) {
   int highest = score;
   int highestIndex = 0;
   int color = 0;
+  Noh* best;
 
   // Acha o nó aberto de maior score
   for( int i = 0; i < tabuleiro->CountAbertos(); i++ ) {
@@ -37,42 +43,51 @@ void Asterisk::Iterate( int& score ) {
 
     // Adiciona a pontuação ordenada ( maximizar pretas, logo preta = 1 ponto )
     // Também define a cor que será setada
-    if( pretos <= 1 ) {
-      sum++;
-      color = 1;
-    } else color = 0;
+    if( pretos <= 1 ) sum++;
 
     // Seleciona o nó aberto de maior pontuação
-    if( highest < sum ) highestIndex = i;
+    if( highest < sum ) {
+      highest = sum;
+      highestIndex = i;
+      color = pretos <= 1 ? 1:0;
+      // cout << "found highest: " << i << endl;
+    }
   }
 
-  // Se a maioria for branca, a proxima e preta
-  this->tabuleiro->listaAbertos[highestIndex]->setCor(color);
+  // cout << "highest i: " << highestIndex << endl;
+  best = this->tabuleiro->listaAbertos[highestIndex];
 
-  // Fecha o nó e remove da lista de abertos, atualizando o score atual
-  this->tabuleiro->listaAbertos[highestIndex]->setFechado(true);
-  this->tabuleiro->listaAbertos.erase( this->tabuleiro->listaAbertos.begin() + highestIndex );
-  score = highest;
+  // Se a maioria for branca, a proxima e preta, caso contrario será branca
+  best->setCor(color);
+  best->setFechado(true);
 
   // Abre os novos nós
   Noh* aux;
-  aux = this->tabuleiro->listaAbertos[highestIndex]->getBaixo();
+  aux = best->getBaixo();
   if( 
+    aux != nullptr &&
     !aux->getEsquerda()->Vazio() && 
     !aux->getDiagonal()->Vazio()
-  ) { 
+  ) {
+    // cout << "get baixo" << endl;
+    aux->setFechado(false);
     this->tabuleiro->listaAbertos.push_back( aux );
-    cout << "push baixo" << endl; 
+    // cout << aux << endl;
   }
 
-  aux = this->tabuleiro->listaAbertos[highestIndex]->getDireita();
+  aux = best->getDireita();
   if( 
+    aux != nullptr &&
     !aux->getCima()->Vazio() && 
     !aux->getDiagonal()->Vazio()
-   ) { 
+   ) {
+    //  cout << "get direita" << endl;
+     aux->setFechado(false);
      this->tabuleiro->listaAbertos.push_back( aux );
-     cout << "push direita" << endl; 
-    }
+    //  cout << aux << endl;
+   }
 
-  cout << "lista size at iteration end " << this->tabuleiro->CountAbertos() << endl;
+  // Remove da lista de abertos, atualizando o score atual
+  this->tabuleiro->listaAbertos.erase( this->tabuleiro->listaAbertos.begin() + highestIndex );
+  score = highest;
 }

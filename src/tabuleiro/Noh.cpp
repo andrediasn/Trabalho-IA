@@ -38,8 +38,8 @@ void Noh::setFechado(bool fechado){
 }
 
 void Noh::setVizinhos(Noh* direita, Noh* baixo){
-    this-> direita = direita;
-    this-> baixo = baixo;
+    this->direita = direita;
+    this->baixo = baixo;
 }
 
 Noh* Noh::getCima() { return this->cima; }
@@ -53,3 +53,10 @@ int Noh::getSoma() {
 }
 
 bool Noh::Vazio() { return this->vazio; }
+
+void Noh::SetPos( int i, int j ) {
+    this->i = i;
+    this->j = j;
+}
+int Noh::I() { return this->i; }
+int Noh::J() { return this->j; }
