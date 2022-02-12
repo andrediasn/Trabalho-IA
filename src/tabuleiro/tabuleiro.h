@@ -11,14 +11,14 @@ using namespace std;
 
 class Tabuleiro {
   public:
-    node*** matrix;
-    vector<node*> listaAbertos;
+    Noh*** matrix;
+    vector<Noh*> listaAbertos;
 
     Tabuleiro();
     ~Tabuleiro();
 
     void Print( string file, string title = "", bool append = true );
-    void Each( void (*callback)(node*, int, int) );
+    void Each( void (*callback)(Noh*, int, int) );
     int CountAbertos();
 
   private:
