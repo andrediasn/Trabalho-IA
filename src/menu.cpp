@@ -6,11 +6,13 @@
 #include "asterisk/asterisk.h"
 #include "ordenada/ordenada.h"
 #include "tabuleiro/tabuleiro.h"
+#include "greedy/greedySearch.h"
 
 using namespace std;
 
 Asterisk* asterisk = new Asterisk();
 Ordenada* ordenada = new Ordenada();
+GreedySearch* greedy = new GreedySearch();
 
 const int _m_opt_count = 5;
 string _m_opts[_m_opt_count] = {
@@ -39,6 +41,12 @@ void menu_select( int i ) {
       ordenada->Run();
       break;
     }
+
+    case 4: {
+      greedy->Run();
+      break;
+    }
+
     case 5: {
       asterisk->Run();
       break;
