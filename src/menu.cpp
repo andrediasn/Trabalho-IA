@@ -10,13 +10,14 @@
 using namespace std;
 
 Asterisk* asterisk = new Asterisk();
+Ordenada* ordenada = new Ordenada();
 
 const int _m_opt_count = 5;
 string _m_opts[_m_opt_count] = {
   "Busca em Largura",
   "Busca em Profundidade",
-  "Busca Gulosa",
   "Busca Ordenada",
+  "Busca Gulosa",
   "Arvore *"
 };
 
@@ -34,6 +35,10 @@ void menu_select( int i ) {
   if( i < 1 || i > _m_opt_count ) return;
 
   switch( i ) {
+    case 3: {
+      ordenada->Run();
+      break;
+    }
     case 5: {
       asterisk->Run();
       break;
