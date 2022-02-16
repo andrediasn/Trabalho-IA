@@ -82,9 +82,9 @@ int Ordenada::PartQuick(vector<Noh*> *abertos, int esq, int dir){
     int i = esq; // Posicao percorrida pela esquerda
     int j = dir; // Posicao percorrida pela direita
     while(i<=j) { // Enquanto esquerda nao ultrapassar direita
-        while(abertos->at(i)->getSoma() < pivo->getSoma())  // Compara Soma do noh de pivo com posicao mais a esquerda
+        while(abertos->at(i)->getSoma() > pivo->getSoma())  // Compara Soma do noh de pivo com posicao mais a esquerda
             i++;
-        while(abertos->at(j)->getSoma() > pivo->getSoma())  // Compara Soma do noh de pivo com posicao mais a direita
+        while(abertos->at(j)->getSoma() < pivo->getSoma())  // Compara Soma do noh de pivo com posicao mais a direita
             j--;
          if(i <= j) { 
             Noh* aux = abertos->at(i); // auxiliar para fazer a troca
