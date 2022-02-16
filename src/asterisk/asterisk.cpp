@@ -27,6 +27,13 @@ void Asterisk::Run() {
   tabuleiro->Print("asterisk", "FINAL");
 }
 
+/**
+ * @brief Roda a busca A* considerando o score visto na busca ordenada e a heurística vista na busca gulosa
+ * 
+ * @param score 
+ * 
+ * @author Thiago de Oliveira Abreu
+ */
 void Asterisk::Iterate( int& score ) {
   int highest = score;
   int highestIndex = 0;
