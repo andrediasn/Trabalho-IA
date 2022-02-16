@@ -7,12 +7,17 @@
 #include "ordenada/ordenada.h"
 #include "tabuleiro/tabuleiro.h"
 #include "greedy/greedySearch.h"
+#include "profundidade/profundidade.h"
+#include "largura/largura.h"
+
 
 using namespace std;
 
 Asterisk* asterisk = new Asterisk();
 Ordenada* ordenada = new Ordenada();
 GreedySearch* greedy = new GreedySearch();
+Profundidade* profundidade = new Profundidade();
+Largura* largura = new Largura();
 
 const int _m_opt_count = 5;
 string _m_opts[_m_opt_count] = {
@@ -37,6 +42,16 @@ void menu_select( int i ) {
   if( i < 1 || i > _m_opt_count ) return;
 
   switch( i ) {
+
+    case 1: {
+      largura->Run();
+      break;
+    }
+
+    case 2: {
+      profundidade->Run();
+      break;
+    }
     case 3: {
       ordenada->Run();
       break;
@@ -53,7 +68,7 @@ void menu_select( int i ) {
     }
 
     default: {
-      cout << "Opcao desconhecida" << endl;
+      cout << "Opcao desconhecidaxxx" << endl;
       break;
     }
   }
