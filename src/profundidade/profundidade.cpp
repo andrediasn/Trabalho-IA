@@ -42,7 +42,7 @@ void Profundidade::Run() {
 	int sum = firstOpen->getSoma();
 
 	// Define a cor como preta ou branca com base nos vizinhos
-	if( sum > 2 ) {
+	if( sum > 1 ) {
 		firstOpen->setCor(0);
 	} else {
 		firstOpen->setCor(1);
