@@ -15,6 +15,7 @@ class Noh {
         bool vazio;
         int i;
         int j;
+        // int level;
 
     public:
         Noh(Noh *cima, Noh *esquerda, Noh *diagonal);
@@ -40,6 +41,9 @@ class Noh {
         void SetPos( int, int );
         int I();
         int J();
+
+        // void Noh::setLevel( int );
+        // int Noh::getLevel();
         // int I();
         // int J();
 };

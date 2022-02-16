@@ -60,3 +60,6 @@ void Noh::SetPos( int i, int j ) {
 }
 int Noh::I() { return this->i; }
 int Noh::J() { return this->j; }
+
+// int Noh::getLevel() { return this->level; }
+// void Noh::setLevel( int l ) { this->level = l; }

@@ -16,7 +16,7 @@ class Profundidade {
     private:
         Tabuleiro* tabuleiro;
 
-        void Iterate( int& score );
+        int Iterate( int& level );
 };
 
 #endif
