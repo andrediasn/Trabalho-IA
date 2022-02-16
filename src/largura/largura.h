@@ -16,7 +16,7 @@ class Largura {
     private:
         Tabuleiro* tabuleiro;
 
-        void Iterate( int& score );
+        int Iterate();
 };
 
 #endif
